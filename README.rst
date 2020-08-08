@@ -13,6 +13,45 @@ Management is deployed to cloud server to serve LocalSchool Edge. It helps schoo
 
 :License: GPLv3
 
+Contributing
+------------
+
+Git Commit and Git Flow 
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Please add an issue if you have feature request or found a bug. You can fork this repo then request a Pull Request.
+
+We use :code:`pre-commit` to make sure everything is good before commiting. Install it with::
+
+  pre-commit install
+
+if you can't commit, probably you need to introduce the hook::
+
+  git config core.hooksPath .git/hooks/pre-commit
+
+
+Run Local
+^^^^^^^^^
+
+Install postgres and redis or use docker compose below
+
+::
+  docker-compose -f utility/docker-compose.yml up -d
+
+Set up virtual environment
+
+.. code-block:: bash
+  mkvirtualenv localshool_management # change if you use venv or pyenv
+  pip install -r requirements/local.txt
+
+
+We will use env file stored in :code:`.envs/local`. Copy :code:`.secret.example` as :code:`.secret`, then run::
+
+  export DJANGO_READ_DOT_ENV_FILE=True
+  python manage.py migrate
+  python manage.py createsuperuser
+  python manage.py run
+
 
 Settings
 --------
@@ -82,7 +121,6 @@ To run a celery worker:
     celery -A config.celery_app worker -l info
 
 Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with *manage.py*, you should be right.
-
 
 
 
