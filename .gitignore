@@ -287,3 +287,4 @@ localshool_management/media/
 .env
 .envs/*
 !.envs/.local/
+.secret
