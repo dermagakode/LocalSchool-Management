@@ -7,6 +7,10 @@ from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from rest_framework.authtoken.views import obtain_auth_token
 
+admin.site.site_header = settings.SITE_HEADER # Django administration -> in <h1>
+admin.site.site_title = settings.SITE_TITLE # Django site admin -> in <title>
+admin.site.index_title = settings.ADMIN_INDEX_TITLE # Site administration -> Home Admin Title
+
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(

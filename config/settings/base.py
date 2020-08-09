@@ -5,6 +5,10 @@ from pathlib import Path
 
 import environ
 
+SITE_HEADER = "LocalSchool Management" # Django administration -> in <h1>
+SITE_TITLE = "LocalShool Management" # Django site admin -> in <title>
+ADMIN_INDEX_TITLE = "Dashboard" # Site administration -> Home Admin Title
+
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # localshool_management/
 APPS_DIR = ROOT_DIR / "localshool_management"
@@ -322,3 +326,11 @@ CORS_URLS_REGEX = r"^/api/.*$"
 
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = env('BUCKET_NAME')
+
+# MQTT
+
+MQTT_HOST = env('MQTT_HOST')
+MQTT_PORT = env('MQTT_PORT')
+MQTT_USER = env('MQTT_USER')
+MQTT_PASS = env('MQTT_PASS')
+MQTT_TOPIC_PREFIX = env('MQTT_TOPIC_PREFIX')
